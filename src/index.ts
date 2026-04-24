@@ -32,4 +32,53 @@ function exibirBiblioteca(livros:Livro[]): void {
   })
 }
 
+function adicionarLivro(livro: Livro): void {
+  if (livro.ano <= 0) {
+    console.log("Ano inválido")
+    return
+  }
+
+  if (livro.paginas <= 0) {
+    console.log("Número de páginas inválido")
+    return
+  }
+
+  livros.push(livro)
+  console.log(`Livro "${livro.titulo}" adicionado com sucesso.`)
+}
+
+function removerLivro(titulo: string): void {
+  const index = livros.findIndex(l => l.titulo === titulo)
+
+  if (index === -1) {
+    console.log("Livro não encontrado")
+    return
+  }
+
+  livros.splice(index, 1)
+  console.log(`Livro "${titulo}" removido com sucesso.`)
+}
+exibirBiblioteca(livros)
+
+
+adicionarLivro({
+  titulo: "O Hobbit 2",
+  autor: "J.R.R. Tolkien",
+  ano: 1937,
+  paginas: 310,
+  lido: true,
+  avaliacao: 5
+})
+
+adicionarLivro({
+  titulo: "Clean Code 2",
+  autor: "Robert C. Martin",
+  ano: 2008,
+  paginas: 464,
+  lido: false,
+  avaliacao: 4
+})
+
+
+removerLivro("O Hobbit 2")
 exibirBiblioteca(livros)
