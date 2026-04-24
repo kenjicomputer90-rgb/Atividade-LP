@@ -82,3 +82,26 @@ adicionarLivro({
 
 removerLivro("O Hobbit 2")
 exibirBiblioteca(livros)
+
+function buscarPorTitulo(termo: string): void {
+  const encontrados = livros.filter(l => l.titulo.includes(termo))
+
+  console.log("\nBusca por título:")
+  encontrados.forEach(l => {
+    console.log(l.titulo)
+  })
+}
+
+function listarPorAutor(autor: string): void {
+  const lista = livros
+    .filter(l => l.autor === autor)
+    .map(l => l.titulo)
+
+  console.log("\nLivros do autor:")
+  lista.forEach(titulo => {
+    console.log(titulo)
+  })
+}
+
+buscarPorTitulo("Code")
+listarPorAutor("Robert C. Martin")
