@@ -1,0 +1,21 @@
+{
+  "name": "ksa",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/kenjicomputer90-rgb/Atividade-LP#readme",
+  "bugs": {
+    "url": "https://github.com/kenjicomputer90-rgb/Atividade-LP/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenjicomputer90-rgb/Atividade-LP.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.ts",
+  "scripts": {
+    "dev": "node src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
