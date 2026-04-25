@@ -105,3 +105,47 @@ function listarPorAutor(autor: string): void {
 
 buscarPorTitulo("Code")
 listarPorAutor("Robert C. Martin")
+
+
+function marcarComoLido(titulo: string, avaliacao: number): void {
+  const livro = livros.find(l => l.titulo === titulo)
+
+  if (!livro) {
+    console.log("Livro não encontrado")
+    return
+  }
+
+  if (avaliacao < 1 || avaliacao > 5) {
+    console.log("Avaliação inválida (use de 1 a 5)")
+    return
+  }
+
+  livro.lido = true
+  livro.avaliacao = avaliacao
+
+  console.log(`Livro "${titulo}" marcado como lido`)
+}
+
+
+function listarLidos(): void {
+  const lidos = livros.filter(l => l.lido === true)
+
+  console.log("\nLivros lidos:")
+  lidos.forEach(l => {
+    console.log(l.titulo)
+  })
+}
+
+function listarPendentes(): void {
+  const pendentes = livros.filter(l => l.lido === false)
+
+  console.log("\nLivros pendentes:")
+  pendentes.forEach(l => {
+    console.log(l.titulo)
+  })
+}
+
+marcarComoLido("Clean Code 2", 5)
+
+listarLidos()
+listarPendentes()
