@@ -205,3 +205,27 @@ if (lidos.length === 0) {
     `Total de paginas lidas: ${totalPaginasLidas}`
   )
 }
+
+
+function exibirPorDecada(livros: Livro[]) {
+  const decadasJaExibidas: number[] = []
+
+  for (let i = 0; i < livros.length; i++) {
+    const decada = Math.floor(livros[i]!.ano / 10) * 10
+
+    if (!decadasJaExibidas.includes(decada)) {
+      decadasJaExibidas.push(decada)
+
+      const livrosDaDecada = livros.filter(l =>
+        Math.floor(l.ano / 10) * 10 === decada
+      )
+
+      console.log(`\nDécada de ${decada}:`)
+
+      livrosDaDecada.forEach(l => {
+        console.log(`- ${l.titulo} (${l.ano})`)
+      })
+    }
+  }
+}
+exibirPorDecada(livros)
