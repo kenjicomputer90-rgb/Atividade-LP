@@ -8,7 +8,7 @@ type Livro = {
 }
 const livros: Livro[] = [ { titulo: "O Hobbit", autor: "J.R.R. Tolkien", ano: 1937, paginas: 310, lido: true, avaliacao: 5 }, { titulo: "Clean Code", autor: "Robert C. Martin", ano: 2008, paginas: 464, lido: true, avaliacao: 4 }, { titulo: "1984", autor: "George Orwell", ano: 1949, paginas: 328, lido: false, avaliacao: 5 }, { titulo: "Dom Casmurro", autor: "Machado de Assis", ano: 1899, paginas: 256, lido: true, avaliacao: 5 }, { titulo: "O Nome do Vento", autor: "Patrick Rothfuss", ano: 2007, paginas: 662, lido: false, avaliacao:6 } ];
 
-
+{}
 function exibirBiblioteca(livros:Livro[]): void {
   console.log('=== MINHA BIBLIOTECA ===\n')
   livros.forEach((livro:Livro, i:number) => {
@@ -149,3 +149,59 @@ marcarComoLido("Clean Code 2", 5)
 
 listarLidos()
 listarPendentes()
+
+function mostrarEstatisticas(): void {
+  const total = livros.length
+
+  const lidos = livros.filter(l => l.lido)
+  const qtdLidos = lidos.length
+
+  const porcentagemLidos =
+    total === 0 ? 0 : (qtdLidos / total) * 100
+
+  const somaAvaliacoes = lidos
+    .filter(l => l.avaliacao > 0)
+    .map(l => l.avaliacao)
+    .reduce((acc, val) => acc + val, 0)
+
+  const qtdAvaliacoes = lidos.filter(l => l.avaliacao > 0).length
+{[]}
+  const mediaAvaliacoes =
+    qtdAvaliacoes === 0 ? 0 : somaAvaliacoes / qtdAvaliacoes
+
+let melhorLivro;
+
+if (lidos.length === 0) {
+  melhorLivro = null; // ou 0, ou o que o exercício pedir
+} else {
+  melhorLivro = lidos
+    .filter(l => l.avaliacao > 0)
+    .reduce((melhor, atual) =>
+      atual.avaliacao > melhor.avaliacao ? atual : melhor
+    );
+}
+
+  const totalPaginasLidas = lidos
+    .map(l => l.paginas)
+    .reduce((acc, val) => acc + val, 0)
+
+  console.log("=== ESTATISTICAS ===\n")
+
+  console.log(`Total de livros: ${total}\n`)
+
+  console.log(
+    `Livros lidos: ${qtdLidos} (${porcentagemLidos.toFixed(2)}%)\n`
+  )
+
+  console.log(
+    `Media das avaliacoes: ${mediaAvaliacoes.toFixed(2)}\n`
+  )
+
+  console.log(
+    `Livro melhor avaliado: ${melhorLivro?.titulo ?? "Nenhum"}\n`
+  )
+
+  console.log(
+    `Total de paginas lidas: ${totalPaginasLidas}`
+  )
+}
