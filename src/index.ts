@@ -58,7 +58,7 @@ function removerLivro(titulo: string): void {
   livros.splice(index, 1)
   console.log(`Livro "${titulo}" removido com sucesso.`)
 }
-exibirBiblioteca(livros)
+
 
 
 adicionarLivro({
@@ -80,8 +80,6 @@ adicionarLivro({
 })
 
 
-removerLivro("O Hobbit 2")
-exibirBiblioteca(livros)
 
 function buscarPorTitulo(termo: string): void {
   const encontrados = livros.filter(l => l.titulo.includes(termo))
@@ -103,8 +101,6 @@ function listarPorAutor(autor: string): void {
   })
 }
 
-buscarPorTitulo("Code")
-listarPorAutor("Robert C. Martin")
 
 
 function marcarComoLido(titulo: string, avaliacao: number): void {
@@ -145,11 +141,6 @@ function listarPendentes(): void {
   })
 }
 
-marcarComoLido("Clean Code 2", 5)
-
-listarLidos()
-listarPendentes()
-
 function mostrarEstatisticas(): void {
   const total = livros.length
 
@@ -172,7 +163,7 @@ function mostrarEstatisticas(): void {
 let melhorLivro;
 
 if (lidos.length === 0) {
-  melhorLivro = null; // ou 0, ou o que o exercício pedir
+  melhorLivro = null; 
 } else {
   melhorLivro = lidos
     .filter(l => l.avaliacao > 0)
@@ -228,4 +219,20 @@ function exibirPorDecada(livros: Livro[]) {
     }
   }
 }
+exibirBiblioteca(livros)
 exibirPorDecada(livros)
+
+removerLivro("O Hobbit 2")
+exibirBiblioteca(livros)
+
+
+buscarPorTitulo("Code")
+listarPorAutor("Robert C. Martin")
+
+
+marcarComoLido("Clean Code 2", 5)
+
+listarLidos()
+listarPendentes()
+ 
+mostrarEstatisticas()
